@@ -22,7 +22,7 @@ const db = mysql.createConnection({
 
 app.get('/', function (req, res) {
 
-    const getAll = "SELECT * FROM Vehicle";
+    const getAll = "SELECT * FROM vehicles";
 
     db.query(getAll, (err, result) => {
         res.send(result);
@@ -32,17 +32,8 @@ app.get('/', function (req, res) {
 
 app.get('/recommendedVehicles/buyer_1/', function (req, res) {
 
-  // let rawdata = fs.readFileSync('./recommended.json');
-  // let recommended= JSON.parse(rawdata);
-  // console.log('test');
-
   res.send(loadUser());
-
-  // const getOne = "SELECT * FROM Vehicle";
-
-  // db.query(getAll, (err, result) => {
-  //     res.send(result);
-  // });
+  
 })
 
 app.use(bodyParser.urlencoded({extended: true}));

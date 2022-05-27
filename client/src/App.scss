@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: local('Montserrat'), url(./fonts//Montserrat/Montserrat-Regular.ttf) format('truetype');
+    src: local('Montserrat'), url(./fonts//Montserrat/Montserrat-SemiBold.ttf) format('truetype');
+    src: local('Montserrat'), url(./fonts//Montserrat/Montserrat-Bold.ttf) format('truetype');
+  }
+
+.container {
+    .card-body {
+        h3 {
+            font-weight: 700;
+            font-family: Montserrat,sans-serif;
+        }
+        .card-text {
+            border-bottom: 1px solid #000;
+            padding-bottom: 1rem;
+        }
+        .specs {
+            border-bottom: 1px solid #000;
+        }
+        ul {
+            padding-left: 0px;
+            li {
+                list-style-type: none;
+                text-align: left;
+                span {
+                    font-weight: 700;
+                }
+            }
+        }
+        .prices {
+            margin-top: 1rem;
+        }
+    }
+}
