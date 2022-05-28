@@ -17,7 +17,7 @@ const db = mysql.createConnection({
     host: '127.0.0.1',
     user: 'root',
     password: '',
-    database: 'ed_eblock'
+    database: 'einc_hack_reco'
   });
 
 app.get('/', function (req, res) {
@@ -29,11 +29,10 @@ app.get('/', function (req, res) {
     });
 })
 
-
 app.get('/recommendedVehicles/buyer_1/', function (req, res) {
 
   res.send(loadUser());
-  
+
 })
 
 app.use(bodyParser.urlencoded({extended: true}));

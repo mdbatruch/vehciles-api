@@ -5,6 +5,10 @@
     src: local('Montserrat'), url(./fonts//Montserrat/Montserrat-Bold.ttf) format('truetype');
   }
 
+h1 {
+    margin: 1rem 0 !important;
+}
+
 .container {
     .card-body {
         h3 {
