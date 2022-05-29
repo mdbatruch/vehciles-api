@@ -8,19 +8,26 @@ import RecommendedList from './components/RecommendedList';
 
 function App() {
 
-  // const { face } = useParams();
-
+  function importAll(r) {
+    let images = {};
+     r.keys().forEach((item, index) => { images[item.replace('./', '')] = r(item); });
+    return images
+   }
+  
+  const images = importAll(require.context('./images', false, /\.(png|jpe?g|svg)$/));
+  
   const name = window.location.pathname.split("/").pop();
 
   const endpoint = window.location.pathname.split("/");
 
-  // console.log(endpoint[1]);
 
   const [vehicleslist, setVehiclesList] = useState([]);
 
   const [recentlyBoughtList, setRecentlyBoughtList] = useState([]);
 
   const [recommendedList, setRecommendedList] = useState([]);
+
+  const [imagesList, setImagesList] = useState([]);
 
   useEffect(()=> {
 
@@ -40,7 +47,7 @@ function App() {
       
       setRecommendedList(response.data);
 
-
+      setImagesList(images);
     });
 
     Axios.get(`http://localhost:8080/recentlyBoughtVehicles/${name}`).then((response) => {
@@ -48,6 +55,8 @@ function App() {
       console.log(response.data);
       
       setRecentlyBoughtList(response.data);
+
+      setImagesList(images);
 
 
     });
@@ -59,9 +68,9 @@ function App() {
 
     <div className="App">
         { path == 'recommendedVehicles' ? (
-          <RecommendedList recommendedList={recommendedList} name={name} />
+          <RecommendedList recommendedList={recommendedList} name={name} imagesList={imagesList} />
         ) : (
-          <RecentlyBoughtList recentlyBoughtList={recentlyBoughtList} name={name}/>
+          <RecentlyBoughtList recentlyBoughtList={recentlyBoughtList} name={name} imagesList={imagesList}/>
         ) }
     </div>
   );

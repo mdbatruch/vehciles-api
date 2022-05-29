@@ -21,6 +21,11 @@ h1 {
         }
         .specs {
             border-bottom: 1px solid #000;
+            h5 {
+                border-bottom: 1px solid #000;
+                padding-bottom: 0.5rem;
+                display: block;
+            }
         }
         ul {
             padding-left: 0px;
@@ -34,6 +39,37 @@ h1 {
         }
         .prices {
             margin-top: 1rem;
+            .ask-price {
+                color: #fd7e14;
+                font-weight: 700;
+                font-size: 1.25rem;
+            }
+            .sold-price {
+                color: #27AB71;
+                font-weight: 700;
+                font-size: 1.25rem;
+                text-align: left;
+            }
+            .status {
+                font-size: 1.5rem;
+                text-transform: capitalize;
+                color: #dc3545;
+            }
+        }
+        .seller {
+            background-color: #000;
+            color: #fff;
+            padding: 1rem;
+            border-radius: 4px;
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            > small {
+                display: block;
+                margin: 0.5rem 0;
+                span {
+                    display: block;
+                }
+            }
         }
     }
 }
