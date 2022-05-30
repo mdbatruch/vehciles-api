@@ -2,8 +2,12 @@
 
 # dependencies
 node_modules
+vendor
 .pnp
 .pnp.js
+
+path.ini
+db.ini
 
 # testing
 /coverage

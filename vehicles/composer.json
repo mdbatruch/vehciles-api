@@ -1,0 +1,12 @@
+{
+    "name": "mikebatruch/vehicles",
+    "authors": [
+        {
+            "name": "mdbatruch",
+            "email": "michael.batruch@edealer.ca"
+        }
+    ],
+    "require": {
+        "fzaninotto/faker": "^1.9"
+    }
+}

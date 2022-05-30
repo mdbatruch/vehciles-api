@@ -28,7 +28,7 @@ class RecentlyBoughtList extends React.Component {
                 })}
 
                 return (
-                    <div className="col-md-3" key={index}>
+                    <div className="col-md-6 col-lg-4 col-xl-3" key={index}>
                         <div className="card mb-4 box-shadow">
                         <img className="card-img-top"  src={require('../images/' + val.make.toLowerCase() + '.jpeg')} data-holder-rendered="true" />
                         <div className="card-body">
