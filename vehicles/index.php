@@ -194,6 +194,8 @@ foreach ($decode as $item) {
             $item['buyer'] = '';
         }
 
+        $vehicle->create_vehicle($item['year'], $item['make'], $item['model'], $item['variant'], $item['trim'], $item['bodyType'], $item['transmission'], $item['fuelType'], $item['displacement'], $item['buyer'], $item['soldPrice'], $item['soldDate'], $item['seller'], $item['askPrice'], $item['status']);
+
 }
 
 
