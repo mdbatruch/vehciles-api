@@ -5,6 +5,8 @@ import './App.scss';
 import Axios from 'axios';
 import RecentlyBoughtList from './components/RecentlyBoughtList';
 import RecommendedList from './components/RecommendedList';
+import All from './components/All';
+import Form from './components/Form';
 
 function App() {
 
@@ -20,6 +22,7 @@ function App() {
 
   const endpoint = window.location.pathname.split("/");
 
+  const [make, setMake] = useState("");
 
   const [vehicleslist, setVehiclesList] = useState([]);
 
@@ -46,7 +49,7 @@ function App() {
       console.log(response.data);
       
       setRecommendedList(response.data);
-
+ 
       setImagesList(images);
     });
 
@@ -64,14 +67,30 @@ function App() {
 
   const path = endpoint[1];
 
+  // const addVehicle = () => {
+
+  //   console.log(make);
+
+  //   Axios.post("http://localhost:3001/insert", {
+  //     make: make,
+  //   }).then(() => {
+  //     console.log("success");
+  //   });
+  // }
+
   return (
 
     <div className="App">
-        { path == 'recommendedVehicles' ? (
-          <RecommendedList recommendedList={recommendedList} name={name} imagesList={imagesList} />
-        ) : (
-          <RecentlyBoughtList recentlyBoughtList={recentlyBoughtList} name={name} imagesList={imagesList}/>
-        ) }
+        {
+        (() => {
+              switch(path){
+                case 'recommendedVehicles': return <RecommendedList recommendedList={recommendedList} name={name} imagesList={imagesList} />;
+                case 'recentlyBought': return <RecentlyBoughtList recentlyBoughtList={recentlyBoughtList} name={name} imagesList={imagesList}/>;
+                case 'insert': return <Form />;
+                default: return <All vehiclesList={vehicleslist} name={name} imagesList={imagesList}/>
+              }
+        })()
+        }
     </div>
   );
 }

@@ -24,9 +24,26 @@ conn.connect((err) =>{
 });
 
 app.get('/', function (req, res) {
-    res.send('hello world')
+    res.send('request sent')
+})
+
+app.post('/insert', function (req, res) {
+
+  console.log('fuck');
+  
+  const make = req.body.make;
+
+  conn.query('INSERT INTO vehicles (make) VALUES (?)', 
+  [make], 
+  (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send("Inserted");
+    }
+  });
 })
  
-app.listen(3000, () => {
-  console.log("Server running successfully on 3000, man!");
+app.listen(3001, () => {
+  console.log("Server running successfully on 3001, man!");
 });
