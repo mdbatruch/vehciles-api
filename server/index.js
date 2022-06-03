@@ -39,14 +39,47 @@ app.get('/vehicles', function (req, res) {
   });
 })
 
+app.delete('/delete/:id', (req, res) => {
+
+  const id = req.params.id
+
+  const deleteOne = "DELETE FROM vehicles WHERE id = ?";
+
+    db.query(deleteOne, id, (err, result) => {
+        
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+      
+    });
+})
+
+app.get('/update/:id', function (req, res) {
+
+  const id = req.params.id
+
+  const getOne = "SELECT * FROM vehicles WHERE id = ?";
+
+  console.log(id)
+
+  db.query(getOne, [id], (err, result) => {
+      res.send(result);
+
+      console.log(result)
+  });
+})
+
 app.put('/update', function (req, res) {
 
-  const year = req.body.model;
-  const id = req.body.id;
+  const id = req.body.id
+  const year = req.body.year
+  const model = req.body.model
 
-  const updateOne = "UPDATE vehicles SET model = ? WHERE id = ?";
+  const updateOne = "UPDATE vehicles SET year = ?, model = ? WHERE id = ?";
 
-  db.query(updateOne, [year, id], (err, result) => {
+  db.query(updateOne, [year, model, id], (err, result) => {
 
       if (err) {
         console.log(err)
@@ -55,15 +88,6 @@ app.put('/update', function (req, res) {
       }
 
   });
-})
-
-app.delete('/delete', function (req, res) {
-
-  // const getAll = "SELECT * FROM vehicles";
-
-  // db.query(getAll, (err, result) => {
-  //     res.send(result);
-  // });
 })
 
 app.get('/recommendedVehicles/buyer_1/', function (req, res) {

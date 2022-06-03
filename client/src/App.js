@@ -7,6 +7,7 @@ import RecentlyBoughtList from './components/RecentlyBoughtList';
 import RecommendedList from './components/RecommendedList';
 import All from './components/All';
 import Form from './components/Form';
+import UpdateForm from './components/UpdateForm';
 
 function App() {
 
@@ -67,17 +68,6 @@ function App() {
 
   const path = endpoint[1];
 
-  // const addVehicle = () => {
-
-  //   console.log(make);
-
-  //   Axios.post("http://localhost:3001/insert", {
-  //     make: make,
-  //   }).then(() => {
-  //     console.log("success");
-  //   });
-  // }
-
   return (
 
     <div className="App">
@@ -87,6 +77,7 @@ function App() {
                 case 'recommendedVehicles': return <RecommendedList recommendedList={recommendedList} name={name} imagesList={imagesList} />;
                 case 'recentlyBought': return <RecentlyBoughtList recentlyBoughtList={recentlyBoughtList} name={name} imagesList={imagesList}/>;
                 case 'insert': return <Form />;
+                case 'update': return <UpdateForm />;
                 default: return <All vehiclesList={vehicleslist} name={name} imagesList={imagesList}/>
               }
         })()

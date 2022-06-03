@@ -38,19 +38,28 @@ const Form = ({ }) => {
         });
       }
 
-      const updateVehicle = (id) => {
-        
-        Axios.put("http://localhost:3000/update", {
-            model: newModel,
-            id: id
-        }).then((response) => {
-            console.log('updated');
+    const updateVehicle = (id) => {
+    
+    Axios.put("http://localhost:3000/update", {
+        model: newModel,
+        id: id
+    }).then((response) => {
+        console.log('updated');
 
-            setVehicleList(vehicleList.map((val) => {
-                return val.id == id ? {id: val.id, make: val.make, model: newModel, year: val.year} : val;
+        setVehicleList(vehicleList.map((val) => {
+            return val.id == id ? {id: val.id, make: val.make, model: newModel, year: val.year} : val;
+        }))
+    });
+    }
+
+    const deleteVehicle = (id) => {
+    
+        Axios.delete(`http://localhost:3000/delete/${id}`).then((response) => {
+            setVehicleList(vehicleList.filter((val) => {
+                return val.id != id
             }))
         });
-      }
+    }
 
     const getVehicles = () => {
 
@@ -150,6 +159,7 @@ const Form = ({ }) => {
                                         }}/>
                                     </div>
                                     <button onClick={() => {updateVehicle(val.id)}}>Update</button>
+                                    <button onClick={() => {deleteVehicle(val.id)}}>Delete</button>
                                </div>
                     })}
 
