@@ -76,10 +76,11 @@ app.put('/update', function (req, res) {
   const id = req.body.id
   const year = req.body.year
   const model = req.body.model
+  const seller = req.body.seller
 
-  const updateOne = "UPDATE vehicles SET year = ?, model = ? WHERE id = ?";
+  const updateOne = "UPDATE vehicles SET year = ?, model = ?, seller = ? WHERE id = ?";
 
-  db.query(updateOne, [year, model, id], (err, result) => {
+  db.query(updateOne, [year, model, seller, id], (err, result) => {
 
       if (err) {
         console.log(err)
