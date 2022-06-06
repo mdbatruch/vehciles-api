@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Form } from 'react-bootstrap';
 import Axios from 'axios';
 
 const UpdateForm = ({ }) => {
@@ -176,95 +178,96 @@ const UpdateForm = ({ }) => {
                 <h1>Update Vehicle</h1>
                 {/* <pre>{JSON.stringify(formValues, undefined, 2)}</pre> */}
                 {vehicleList.map((val, key) => {
-                    return <div className="insert" key={key}>
-                                <div className="form-field">
+                    return <form className="insert" key={key}>
+                                <div className="form-field form-group">
                                     <label>Year</label>
                                     <div>Current: {val.year}</div>
-                                    <input type="text"
+                                    <input type="text" className="form-control"
                                     name="year"
-                                    defaultValue={val.year}
                                     onChange={handleChange} />
                                     <p>{formErrors.year}</p>
                                 </div>
-                                <div className="form-field">
+                                <div className="form-field form-group">
                                     <label>Make</label>
                                     <div>Current: {val.make}</div>
-                                    <input type="text"
+                                    <input type="text" className="form-control"
                                     name="make"
                                     onChange={handleChange} />
                                      <p>{formErrors.make}</p>
                                 </div>
-                                <div className="form-field">
+                                <div className="form-field form-group">
                                     <label>Model</label>
                                     <div>Current: {val.model}</div>
-                                    <input type="text"
+                                    <input type="text" className="form-control"
                                     name="model"
                                     onChange={handleChange} />
                                      <p>{formErrors.model}</p>
                                 </div>
-                                <div className="form-field">
+                                <div className="form-field form-group">
                                     <label>Variant</label>
                                     <div>Current: {val.variant}</div>
-                                    <input type="text"
+                                    <input type="text" className="form-control"
                                     name="variant"
                                     onChange={handleChange} />
                                      <p>{formErrors.variant}</p>
                                 </div>
-                                <div className="form-field">
+                                <div className="form-field form-group">
                                     <label>Body Type</label>
                                     <div>Current: {val.body_type}</div>
-                                    <input type="text"
+                                    <input type="text" className="form-control"
                                     name="body_type"
                                     onChange={handleChange} />
                                      <p>{formErrors.body_type}</p>
                                 </div>
-                                <div className="form-field">
+                                <div className="form-field form-group">
                                     <label>Transmission</label>
                                     <div>Current: {val.transmission}</div>
-                                    <input type="text"
+                                    <input type="text" className="form-control"
                                     name="transmission"
                                     onChange={handleChange} />
                                      <p>{formErrors.transmission}</p>
                                 </div>
-                                <div className="form-field">
+                                <div className="form-field form-group">
                                     <label>Fuel Type</label>
                                     <div>Current: {val.fuel_type}</div>
-                                    <input type="text"
+                                    <input type="text" className="form-control"
                                     name="fuel_type"
                                     onChange={handleChange} />
                                      <p>{formErrors.fuel_type}</p>
                                 </div>
-                                <div className="form-field">
+                                <div className="form-field form-group">
                                     <label>Displacement</label>
                                     <div>Current: {val.displacement}</div>
-                                    <input type="text"
+                                    <input type="text" className="form-control"
                                     name="displacement"
                                     onChange={handleChange} />
                                      <p>{formErrors.displacement}</p>
                                 </div>
-                                <div className="form-field">
+                                <div className="form-field form-group">
                                     <label>Seller</label>
                                     <div>Current: {val.seller}</div>
-                                    <input type="text"
+                                    <input type="text" className="form-control"
                                     name="seller"
                                     onChange={handleChange} />
                                      <p>{formErrors.seller}</p>
                                 </div>
-                                <div className="form-field">
+                                <div className="form-field form-group">
                                     <label>Ask Price</label>
                                     <div>Current: {val.ask_price}</div>
-                                    <input type="text"
+                                    <input type="text" className="form-control"
                                     name="ask_price"
                                     onChange={handleChange} />
                                      <p>{formErrors.ask_price}</p>
                                 </div>
-                        <button onClick={() => {updateVehicle(val.id)}}>Update</button>
-                        <button onClick={() => {deleteVehicle(val.id)}}>Delete</button>
+                                <div className="d-flex justify-content-between">
+                                    <button className="btn btn-success" onClick={() => {updateVehicle(val.id)}}>Update</button>
+                                    <button className="btn btn-danger" onClick={() => {deleteVehicle(val.id)}}>Delete</button>
+                                </div>
                         {Object.keys(formErrors).length === 0 && isSubmit ? (
                                 <div>Added Successfully!</div>
                             ) : ('')}
                         <p>{formErrors.general}</p>
-                    </div>
+                    </form>
             })}
             </div>
     )
