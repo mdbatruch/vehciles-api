@@ -75,12 +75,30 @@ app.put('/update', function (req, res) {
 
   const id = req.body.id
   const year = req.body.year
-  const model = req.body.model
+  const model = req.body.model_type
   const seller = req.body.seller
 
   const updateOne = "UPDATE vehicles SET year = ?, model = ?, seller = ? WHERE id = ?";
 
-  db.query(updateOne, [year, model, seller, id], (err, result) => {
+  db.query(updateOne, [year, model_type, seller, id], (err, result) => {
+
+      if (err) {
+        console.log(err)
+      } else {
+        res.send(result);
+      }
+
+  });
+})
+
+app.put('/update_one', function (req, res) {
+
+  const id = req.body.id
+  const model = req.body.model
+
+  const updateOne = "UPDATE vehicles SET model = ? WHERE id = ?";
+
+  db.query(updateOne, [model, id], (err, result) => {
 
       if (err) {
         console.log(err)

@@ -56,7 +56,7 @@ const UpdateForm = ({ }) => {
       }
 
       useEffect(() => {
-
+        
         getVehicle(id)
           
         console.log(formErrors);
@@ -139,10 +139,17 @@ const UpdateForm = ({ }) => {
       }
 
       const handleChange = (e) => {
+
+        e.preventDefault();
+
         const { name, value } = e.target;
 
         setFormValues({...formValues, [name]: value});
         console.log(formValues);
+    }
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
     }
 
     const updateVehicle = (id) => {
@@ -178,14 +185,14 @@ const UpdateForm = ({ }) => {
                 <h1>Update Vehicle</h1>
                 {/* <pre>{JSON.stringify(formValues, undefined, 2)}</pre> */}
                 {vehicleList.map((val, key) => {
-                    return <form className="insert" key={key}>
+                    return <form onSubmit={handleSubmit} className="insert" key={key}>
                                 <div className="form-field form-group">
                                     <label>Year</label>
                                     <div>Current: {val.year}</div>
                                     <input type="text" className="form-control"
                                     name="year"
                                     onChange={handleChange} />
-                                    <p>{formErrors.year}</p>
+                                    <p className="text-danger">{formErrors.year}</p>
                                 </div>
                                 <div className="form-field form-group">
                                     <label>Make</label>
@@ -193,7 +200,7 @@ const UpdateForm = ({ }) => {
                                     <input type="text" className="form-control"
                                     name="make"
                                     onChange={handleChange} />
-                                     <p>{formErrors.make}</p>
+                                     <p className="text-danger">{formErrors.make}</p>
                                 </div>
                                 <div className="form-field form-group">
                                     <label>Model</label>
@@ -201,7 +208,7 @@ const UpdateForm = ({ }) => {
                                     <input type="text" className="form-control"
                                     name="model"
                                     onChange={handleChange} />
-                                     <p>{formErrors.model}</p>
+                                     <p className="text-danger">{formErrors.model}</p>
                                 </div>
                                 <div className="form-field form-group">
                                     <label>Variant</label>
@@ -209,7 +216,7 @@ const UpdateForm = ({ }) => {
                                     <input type="text" className="form-control"
                                     name="variant"
                                     onChange={handleChange} />
-                                     <p>{formErrors.variant}</p>
+                                     <p className="text-danger">{formErrors.variant}</p>
                                 </div>
                                 <div className="form-field form-group">
                                     <label>Body Type</label>
@@ -217,7 +224,7 @@ const UpdateForm = ({ }) => {
                                     <input type="text" className="form-control"
                                     name="body_type"
                                     onChange={handleChange} />
-                                     <p>{formErrors.body_type}</p>
+                                     <p className="text-danger">{formErrors.body_type}</p>
                                 </div>
                                 <div className="form-field form-group">
                                     <label>Transmission</label>
@@ -225,7 +232,7 @@ const UpdateForm = ({ }) => {
                                     <input type="text" className="form-control"
                                     name="transmission"
                                     onChange={handleChange} />
-                                     <p>{formErrors.transmission}</p>
+                                     <p className="text-danger">{formErrors.transmission}</p>
                                 </div>
                                 <div className="form-field form-group">
                                     <label>Fuel Type</label>
@@ -233,7 +240,7 @@ const UpdateForm = ({ }) => {
                                     <input type="text" className="form-control"
                                     name="fuel_type"
                                     onChange={handleChange} />
-                                     <p>{formErrors.fuel_type}</p>
+                                     <p className="text-danger">{formErrors.fuel_type}</p>
                                 </div>
                                 <div className="form-field form-group">
                                     <label>Displacement</label>
@@ -241,7 +248,7 @@ const UpdateForm = ({ }) => {
                                     <input type="text" className="form-control"
                                     name="displacement"
                                     onChange={handleChange} />
-                                     <p>{formErrors.displacement}</p>
+                                     <p className="text-danger">{formErrors.displacement}</p>
                                 </div>
                                 <div className="form-field form-group">
                                     <label>Seller</label>
@@ -249,7 +256,7 @@ const UpdateForm = ({ }) => {
                                     <input type="text" className="form-control"
                                     name="seller"
                                     onChange={handleChange} />
-                                     <p>{formErrors.seller}</p>
+                                     <p className="text-danger">{formErrors.seller}</p>
                                 </div>
                                 <div className="form-field form-group">
                                     <label>Ask Price</label>
@@ -257,16 +264,16 @@ const UpdateForm = ({ }) => {
                                     <input type="text" className="form-control"
                                     name="ask_price"
                                     onChange={handleChange} />
-                                     <p>{formErrors.ask_price}</p>
+                                     <p className="text-danger">{formErrors.ask_price}</p>
                                 </div>
                                 <div className="d-flex justify-content-between">
                                     <button className="btn btn-success" onClick={() => {updateVehicle(val.id)}}>Update</button>
                                     <button className="btn btn-danger" onClick={() => {deleteVehicle(val.id)}}>Delete</button>
                                 </div>
                         {Object.keys(formErrors).length === 0 && isSubmit ? (
-                                <div>Added Successfully!</div>
+                                <div className="text-success">Added Successfully!</div>
                             ) : ('')}
-                        <p>{formErrors.general}</p>
+                        <p className="text-danger">{formErrors.general}</p>
                     </form>
             })}
             </div>
