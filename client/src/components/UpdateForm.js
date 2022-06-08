@@ -271,7 +271,7 @@ const UpdateForm = ({ }) => {
                                     <button className="btn btn-danger" onClick={() => {deleteVehicle(val.id)}}>Delete</button>
                                 </div>
                         {Object.keys(formErrors).length === 0 && isSubmit ? (
-                                <div className="text-success">Added Successfully!</div>
+                                <div className="text-success">Updated Successfully!</div>
                             ) : ('')}
                         <p className="text-danger">{formErrors.general}</p>
                     </form>

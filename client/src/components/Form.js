@@ -113,9 +113,9 @@ const Form = ({ }) => {
             errors.model_type = "Model is required!";
           }
 
-          if (!values.model) {
-            errors.model = "Model is required!";
-          }
+        //   if (!values.model) {
+        //     errors.model = "Model is required!";
+        //   }
 
           if (!values.variant) {
             errors.variant = "Variant is required!";
@@ -164,6 +164,8 @@ const Form = ({ }) => {
 
         setModel(formValues.model);
 
+        setIsSubmit(false);        
+        
         console.log(id, formValues.model)
 
         setIsIndSubmit(true);
